@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da8c07ce778b4b278f012ad89e072c0, type: 3}
+  m_Name: QuestionCategoryStyles
+  m_EditorClassIdentifier: 
+  _questionsStyles:
+  - _category: 0
+    _tileColor: {r: 0.48584908, g: 0.57954955, b: 1, a: 1}
+    _icon: {fileID: 21300000, guid: 9e5319b8d8c224831adbb3c33f2e403b, type: 3}
+  - _category: 1
+    _tileColor: {r: 0.9811321, g: 0.30081883, b: 0.30081883, a: 1}
+    _icon: {fileID: 21300000, guid: 6b75b44dbbd064c0e8e9aac2f5f52e5e, type: 3}
+  - _category: 2
+    _tileColor: {r: 0.042452812, g: 1, b: 0.13442318, a: 1}
+    _icon: {fileID: 21300000, guid: e3f6d2763d49e449291109456d58200e, type: 3}
+  - _category: 3
+    _tileColor: {r: 0.9339623, g: 0.67688656, b: 0.15419187, a: 1}
+    _icon: {fileID: 21300000, guid: 3fd8286764dfd4e5b98824e6c2a9ff31, type: 3}
+  - _category: 4
+    _tileColor: {r: 0, g: 0.7921569, b: 0.75299764, a: 1}
+    _icon: {fileID: 21300000, guid: 608c1ccef1d3a429c980b05149c64f5f, type: 3}
