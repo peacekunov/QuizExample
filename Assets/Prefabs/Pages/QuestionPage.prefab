@@ -291,7 +291,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Who won the first free elections in USSR?
+  m_Text: Title
 --- !u!1 &4304669118994907665
 GameObject:
   m_ObjectHideFlags: 0

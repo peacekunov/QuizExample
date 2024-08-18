@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -7,10 +6,6 @@ using UnityEngine;
 public class Questions : Singleton<Questions>
 {
     private QuestionDto[] _questions;
-
-    public IEnumerable<QuestionDto> All => _questions;
-
-    public int Count => _questions.Length;
 
     public async Task LoadData()
     {
@@ -22,6 +17,6 @@ public class Questions : Singleton<Questions>
 
     public QuestionDto GetById(int id)
     {
-        return _questions.SingleOrDefault(q => q.id == id);
+        return _questions.Single(q => q.id == id);
     }
 }
