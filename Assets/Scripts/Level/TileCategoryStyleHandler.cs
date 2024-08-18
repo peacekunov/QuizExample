@@ -26,7 +26,15 @@ public class TileCategoryStyleHandler : MonoBehaviour
     public void SetStyle(QuestionCategory category)
     {
         var style = _styles.GetStyle(category);
-        _view.TileColor = style.TileColor;
-        _view.Icon = style.Icon;
+
+        if (style != null)
+        {
+            _view.TileColor = style.TileColor;
+            _view.Icon = style.Icon;
+        }
+        else
+        {
+            Debug.LogError($"Style for category '{category}' not found");
+        }
     }
 }

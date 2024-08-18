@@ -67,6 +67,9 @@ public class LevelMap : MonoBehaviour
 
     public void CompleteTile(int id)
     {
-        _tiles[id].Complete();
+        if (_tiles.ContainsKey(id))
+        {
+            _tiles[id].Complete();
+        }
     }
 }
