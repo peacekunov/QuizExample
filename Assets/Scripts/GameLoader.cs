@@ -6,6 +6,9 @@ public class GameLoader : MonoBehaviour
     [SerializeField]
     private PlayerState _playerState;
 
+    [SerializeField]
+    private UIManager _uiManager;
+
     private void Start()
     {
         LoadGame();
@@ -18,6 +21,8 @@ public class GameLoader : MonoBehaviour
 
         await Task.WhenAll(playerStateLoading, questionDataLoading);
 
-        UIManager.Instance.ShowLevelScreen();
+        _uiManager.ShowLevelScreen();
+
+        Destroy(gameObject);
     }
 }

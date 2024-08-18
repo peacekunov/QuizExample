@@ -1,19 +1,19 @@
 using UnityEngine;
 
-public class UIManager : Singleton<UIManager>
+public class UIManager : MonoBehaviour
 {
     [SerializeField]
     private Canvas _mainCanvas;
 
     [SerializeField]
-    private GameObject _levelPrefab;
+    private GameObject _levelPagePrefab;
 
     [SerializeField]
     private QuestionPresenter _questionPagePrefab;
 
     public void ShowLevelScreen()
     {
-        Instantiate(_levelPrefab, _mainCanvas.transform);
+        Instantiate(_levelPagePrefab, _mainCanvas.transform);
     }
 
     public void ShowQuestionScreen(int questionId)

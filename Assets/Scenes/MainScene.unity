@@ -270,7 +270,6 @@ GameObject:
   - component: {fileID: 609471183}
   - component: {fileID: 609471182}
   - component: {fileID: 609471181}
-  - component: {fileID: 609471185}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -335,7 +334,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -361,21 +360,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &609471185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 609471180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54fc0f89aed07406cbb8223a61d77aaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mainCanvas: {fileID: 609471183}
-  _levelPrefab: {fileID: 1179623936214402825, guid: a049eaab5dfdc40c79a983b8e950f200, type: 3}
-  _questionPagePrefab: {fileID: 7279119522913245787, guid: a5f3bee39ab6f4a3fa74e8a730200694, type: 3}
 --- !u!1 &705051838
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,6 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerState: {fileID: 1216683482}
+  _uiManager: {fileID: 2087878253}
 --- !u!4 &705051840
 Transform:
   m_ObjectHideFlags: 0
@@ -525,6 +510,53 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632858600}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2087878252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2087878254}
+  - component: {fileID: 2087878253}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2087878253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087878252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fc0f89aed07406cbb8223a61d77aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCanvas: {fileID: 609471183}
+  _levelPagePrefab: {fileID: 1179623936214402825, guid: a049eaab5dfdc40c79a983b8e950f200, type: 3}
+  _questionPagePrefab: {fileID: 7279119522913245787, guid: a5f3bee39ab6f4a3fa74e8a730200694, type: 3}
+--- !u!4 &2087878254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087878252}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -882,5 +914,6 @@ SceneRoots:
   - {fileID: 705051840}
   - {fileID: 1216683483}
   - {fileID: 336496331}
+  - {fileID: 2087878254}
   - {fileID: 609471184}
   - {fileID: 1632858603}

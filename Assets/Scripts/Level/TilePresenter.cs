@@ -3,7 +3,7 @@ using UnityEngine;
 public class TilePresenter : MonoBehaviour
 {
     [SerializeField]
-    private bool _availableOnInit;
+    private bool _availableByDefault;
 
     private TileModel _model;
 
@@ -13,15 +13,6 @@ public class TilePresenter : MonoBehaviour
     {
         _model = GetComponent<TileModel>();
         _view = GetComponent<TileView>();
-
-        if (_availableOnInit)
-        {
-            _model.State = LevelMapTileState.Available;
-        }
-        else
-        {
-            _model.State = LevelMapTileState.Blocked;
-        }
     }
 
     private void OnEnable()
@@ -32,6 +23,18 @@ public class TilePresenter : MonoBehaviour
     private void OnDisable()
     {
         _model.StateChanged -= SetViewStyle;
+    }
+
+    public void SetDefaultState()
+    {
+        if (_availableByDefault)
+        {
+            _model.State = LevelMapTileState.Available;
+        }
+        else
+        {
+            _model.State = LevelMapTileState.Blocked;
+        }
     }
 
     public void Unblock()
