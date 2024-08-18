@@ -9,7 +9,7 @@ public class LevelMap : MonoBehaviour
 
     private void Awake()
     {
-        _playerState = FindAnyObjectByType<PlayerState>();
+        _playerState = GameObject.FindWithTag(Constants.PLAYER_STATE_TAG).GetComponent<PlayerState>();
 
         _tiles = new Dictionary<int, TilePresenter>();
         foreach (var tileGameObject in GameObject.FindGameObjectsWithTag(Constants.LEVEL_MAP_TILE_TAG))

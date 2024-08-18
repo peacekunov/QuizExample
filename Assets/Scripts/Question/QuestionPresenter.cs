@@ -12,7 +12,7 @@ public class QuestionPresenter : MonoBehaviour
 
     private void Awake()
     {
-        _playerState = FindFirstObjectByType<PlayerState>();
+        _playerState = GameObject.FindWithTag(Constants.PLAYER_STATE_TAG).GetComponent<PlayerState>();
         _model = new QuestionModel();
     }
 
