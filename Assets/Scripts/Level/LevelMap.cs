@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class LevelMap : MonoBehaviour
 {
-    [SerializeField]
     private PlayerState _playerState;
 
     private Dictionary<int, TilePresenter> _tiles;
 
     private void Awake()
     {
+        _playerState = FindAnyObjectByType<PlayerState>();
+
         _tiles = new Dictionary<int, TilePresenter>();
         foreach (var tileGameObject in GameObject.FindGameObjectsWithTag(Constants.LEVEL_MAP_TILE_TAG))
         {

@@ -1,8 +1,8 @@
 public class Constants
 {
-    public const string QUESTION_DATA_FILE_PATH = "Data/questions";
+    public const string QUESTION_DATA_KEY = "questions";
 
-    public const string QUESTION_IMAGES_RESOURCES_PATH = "questions/";
+    public const string QUESTION_IMAGES_KEY = "questions/images/";
 
     public const int CORRECT_ANSWER_SCORE = 100;
 

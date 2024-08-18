@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class QuestionPresenter : MonoBehaviour
 {
@@ -32,9 +33,14 @@ public class QuestionPresenter : MonoBehaviour
         _view.AnswerSelected -= Answer;
     }
 
+    private void OnDestroy()
+    {
+        _model.UnloadResources();
+    }
+
     public void ShowQuestion(int questionId)
     {
-        StartCoroutine(_model.LoadQuestion(questionId));
+        _model.LoadQuestion(questionId);
     }
 
     public void Answer(int answerIndex)

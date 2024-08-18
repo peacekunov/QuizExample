@@ -1,26 +1,31 @@
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
+using UnityEngine;
 
 public class Questions : Singleton<Questions>
 {
-    private DataProvider _dataProvider;
-
     private QuestionDto[] _questions;
 
     public IEnumerable<QuestionDto> All => _questions;
 
     public int Count => _questions.Length;
 
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
-        _dataProvider = new FileDataProvider(Constants.QUESTION_DATA_FILE_PATH);
         LoadData();
     }
 
     public void LoadData()
     {
-        _questions = _dataProvider.GetQuestions();
+        var assetLoader = new LocalAssetLoader<TextAsset>();
+        assetLoader.DataLoaded += textAsset =>
+        {
+            _questions = JsonConvert.DeserializeObject<QuestionDto[]>(textAsset.text);
+            assetLoader.UnloadAsset();
+            UIManager.Instance.ShowLevelScreen();
+        };
+        assetLoader.LoadAsset(Constants.QUESTION_DATA_KEY);
     }
 
     public QuestionDto GetById(int id)

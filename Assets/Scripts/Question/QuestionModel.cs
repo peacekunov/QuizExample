@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class QuestionModel
@@ -7,7 +6,7 @@ public class QuestionModel
 
     private bool _isAnswered;
 
-    private ImageLoader _imageLoader;
+    private LocalAssetLoader<Sprite> _imageLoader;
 
     public event System.Action<QuestionDto, Sprite> QuestionLoaded;
 
@@ -17,14 +16,18 @@ public class QuestionModel
 
     public QuestionModel()
     {
-        _imageLoader = new ResourceImageLoader();
+        _imageLoader = new LocalAssetLoader<Sprite>();
     }
 
-    public IEnumerator LoadQuestion(int id)
+    public void LoadQuestion(int id)
     {
         _questionData = Questions.Instance.GetById(id);
-        yield return _imageLoader.LoadImage(_questionData.id);
-        QuestionLoaded(_questionData, _imageLoader.Image);
+
+        _imageLoader.DataLoaded += image =>
+        {
+            QuestionLoaded?.Invoke(_questionData, image);
+        };
+        _imageLoader.LoadAsset(Constants.QUESTION_IMAGES_KEY + _questionData.id + ".jpg");
     }
 
     public void Answer(int answerIndex)
@@ -35,5 +38,10 @@ public class QuestionModel
             bool isRight = _questionData.answers[answerIndex].isRight;
             Answered?.Invoke(answerIndex, isRight);
         }
+    }
+
+    public void UnloadResources()
+    {
+        _imageLoader.UnloadAsset();
     }
 }
