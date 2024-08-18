@@ -1,13 +1,23 @@
 using UnityEngine;
+using Zenject;
 
 public class TileCategoryStyleHandler : MonoBehaviour
 {
     [SerializeField]
     private QuestionCategoryStyleList _styles;
 
+    private Questions _questions;
+
     private QuestionTileModel _model;
 
     private TileView _view;
+
+    [Inject]
+    public void Constructor(Questions questions)
+    {
+        Debug.Log("TileCategoryStyleHandler constructor");
+        _questions = questions;
+    }
 
     private void Awake()
     {
@@ -17,7 +27,7 @@ public class TileCategoryStyleHandler : MonoBehaviour
 
     private void Start()
     {
-        SetStyle(Questions.Instance.GetById(_model.Id).category);
+        SetStyle(_questions.GetById(_model.Id).category);
     }
 
     public void SetStyle(QuestionCategory category)

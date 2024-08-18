@@ -3,9 +3,14 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using UnityEngine;
 
-public class Questions : Singleton<Questions>
+public class Questions
 {
     private QuestionDto[] _questions;
+
+    public Questions()
+    {
+        Debug.Log("Questions constructor");
+    }
 
     public async Task LoadData()
     {

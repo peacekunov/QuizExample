@@ -1,7 +1,10 @@
 using UnityEngine;
+using Zenject;
 
 public class QuestionModel
 {
+    private Questions _questions;
+
     private QuestionDto _questionData;
 
     private bool _isAnswered;
@@ -14,14 +17,16 @@ public class QuestionModel
 
     public int QuestionId => _questionData.id;
 
-    public QuestionModel()
+    public QuestionModel(Questions questions)
     {
+        Debug.Log("QuestionModel Constructor");
+        _questions = questions;
         _imageLoader = new LocalAssetLoader<Sprite>();
     }
 
     public async void LoadQuestion(int id)
     {
-        _questionData = Questions.Instance.GetById(id);
+        _questionData = _questions.GetById(id);
         var image = await _imageLoader.LoadAsset(Constants.QUESTION_IMAGES_ASSET_KEY + _questionData.id + ".jpg");
         QuestionLoaded?.Invoke(_questionData, image);
     }
