@@ -9,15 +9,18 @@ public class TileCategoryStyleHandler : MonoBehaviour
 
     private TileView _view;
 
+    private Questions _questions;
+
     private void Awake()
     {
         _model = GetComponent<QuestionTileModel>();
         _view = GetComponent<TileView>();
+        _questions = GameObject.FindWithTag(Constants.QUESTIONS_TAG).GetComponent<Questions>();
     }
 
     private void Start()
     {
-        SetStyle(Questions.Instance.GetById(_model.Id).category);
+        SetStyle(_questions.GetById(_model.Id).category);
     }
 
     public void SetStyle(QuestionCategory category)

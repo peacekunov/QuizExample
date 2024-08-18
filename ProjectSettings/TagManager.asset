@@ -6,6 +6,8 @@ TagManager:
   tags:
   - LevelMapTile
   - PlayerState
+  - Questions
+  - UiManager
   layers:
   - Default
   - TransparentFX

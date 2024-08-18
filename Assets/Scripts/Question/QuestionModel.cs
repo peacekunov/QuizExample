@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class QuestionModel
 {
+    private Questions _questions;
+
     private QuestionDto _questionData;
 
     private bool _isAnswered;
@@ -17,11 +19,12 @@ public class QuestionModel
     public QuestionModel()
     {
         _imageLoader = new LocalAssetLoader<Sprite>();
+        _questions = GameObject.FindWithTag(Constants.QUESTIONS_TAG).GetComponent<Questions>();
     }
 
     public async void LoadQuestion(int id)
     {
-        _questionData = Questions.Instance.GetById(id);
+        _questionData = _questions.GetById(id);
         var image = await _imageLoader.LoadAsset(Constants.QUESTION_IMAGES_ASSET_KEY + _questionData.id + ".jpg");
         QuestionLoaded?.Invoke(_questionData, image);
     }

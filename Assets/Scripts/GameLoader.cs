@@ -4,6 +4,9 @@ using UnityEngine;
 public class GameLoader : MonoBehaviour
 {
     [SerializeField]
+    private Questions _questions;
+
+    [SerializeField]
     private PlayerState _playerState;
 
     [SerializeField]
@@ -17,7 +20,7 @@ public class GameLoader : MonoBehaviour
     private async void LoadGame()
     {
         var playerStateLoading = _playerState.LoadData();
-        var questionDataLoading = Questions.Instance.LoadData();
+        var questionDataLoading = _questions.LoadData();
 
         await Task.WhenAll(playerStateLoading, questionDataLoading);
 

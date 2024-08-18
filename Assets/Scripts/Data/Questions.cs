@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using UnityEngine;
 
-public class Questions : Singleton<Questions>
+public class Questions : MonoBehaviour
 {
     private QuestionDto[] _questions;
 
