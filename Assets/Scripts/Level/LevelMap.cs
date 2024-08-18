@@ -29,6 +29,41 @@ public class LevelMap : MonoBehaviour
         _playerState.StepCompleted -= CompleteTile;
     }
 
+    private void Start()
+    {
+        if (_playerState.HasLevelData)
+        {
+            LoadLevelData();
+        }
+        else
+        {
+            CreateLevelData();
+        }
+    }
+
+    private void CreateLevelData()
+    {
+        var steps = new List<LevelStepData>();
+        foreach (var tile in _tiles)
+        {
+            steps.Add(new LevelStepData { Id = tile.Key });
+        }
+
+        _playerState.SetLevelStaps(steps.ToArray());
+        _playerState.SaveData();
+    }
+
+    private void LoadLevelData()
+    {
+        foreach (var tile in _tiles)
+        {
+            if (_playerState.IsStepCompleted(tile.Key))
+            {
+                CompleteTile(tile.Key);
+            }
+        }
+    }
+
     public void CompleteTile(int id)
     {
         _tiles[id].Complete();

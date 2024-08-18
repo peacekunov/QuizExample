@@ -8,6 +8,10 @@ public class PlayerState : MonoBehaviour
 
     private Storage<PlayerData> _storage;
 
+    public int Score => _playerData.Score;
+
+    public bool HasLevelData => _playerData.Steps.Count() > 0;
+
     public event System.Action<int> ScoreChanged;
 
     public event System.Action<int> StepCompleted;
@@ -27,6 +31,16 @@ public class PlayerState : MonoBehaviour
         }
     }
 
+    public void SetLevelStaps(LevelStepData[] steps)
+    {
+        _playerData.Steps = steps;
+    }
+
+    public bool IsStepCompleted(int id)
+    {
+        return _playerData.GetStep(id).Completed;
+    }
+
     public void AddScore(int addScore)
     {
         _playerData.Score += addScore;
@@ -35,7 +49,7 @@ public class PlayerState : MonoBehaviour
 
     public void CompleteStep(int id)
     {
-        _playerData.Steps.SingleOrDefault(s => s.Id == id).Completed = true;
+        _playerData.GetStep(id).Completed = true;
         StepCompleted?.Invoke(id);
     }
 
