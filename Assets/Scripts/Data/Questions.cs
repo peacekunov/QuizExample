@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -11,21 +12,12 @@ public class Questions : Singleton<Questions>
 
     public int Count => _questions.Length;
 
-    private void Start()
-    {
-        LoadData();
-    }
-
-    public void LoadData()
+    public async Task LoadData()
     {
         var assetLoader = new LocalAssetLoader<TextAsset>();
-        assetLoader.DataLoaded += textAsset =>
-        {
-            _questions = JsonConvert.DeserializeObject<QuestionDto[]>(textAsset.text);
-            assetLoader.UnloadAsset();
-            UIManager.Instance.ShowLevelScreen();
-        };
-        assetLoader.LoadAsset(Constants.QUESTION_DATA_KEY);
+        var textAsset = await assetLoader.LoadAsset(Constants.QUESTION_DATA_ASSET_KEY);
+        _questions = JsonConvert.DeserializeObject<QuestionDto[]>(textAsset.text);
+        assetLoader.UnloadAsset();
     }
 
     public QuestionDto GetById(int id)

@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 public class QuestionPresenter : MonoBehaviour
 {
@@ -56,6 +55,8 @@ public class QuestionPresenter : MonoBehaviour
         {
             _playerState.AddScore(Constants.CORRECT_ANSWER_SCORE);
         }
+
+        _playerState.SaveData();
 
         _view.DisplayUserAnswer(answerIndex, isRight);
 

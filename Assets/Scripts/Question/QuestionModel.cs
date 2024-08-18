@@ -19,15 +19,11 @@ public class QuestionModel
         _imageLoader = new LocalAssetLoader<Sprite>();
     }
 
-    public void LoadQuestion(int id)
+    public async void LoadQuestion(int id)
     {
         _questionData = Questions.Instance.GetById(id);
-
-        _imageLoader.DataLoaded += image =>
-        {
-            QuestionLoaded?.Invoke(_questionData, image);
-        };
-        _imageLoader.LoadAsset(Constants.QUESTION_IMAGES_KEY + _questionData.id + ".jpg");
+        var image = await _imageLoader.LoadAsset(Constants.QUESTION_IMAGES_ASSET_KEY + _questionData.id + ".jpg");
+        QuestionLoaded?.Invoke(_questionData, image);
     }
 
     public void Answer(int answerIndex)

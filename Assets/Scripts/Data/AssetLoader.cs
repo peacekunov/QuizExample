@@ -1,8 +1,8 @@
+using System.Threading.Tasks;
+
 public interface AssetLoader<T>
 {
-    event System.Action<T> DataLoaded;
-
-    void LoadAsset(string assetKey);
+    Task<T> LoadAsset(string assetKey);
 
     void UnloadAsset();
 

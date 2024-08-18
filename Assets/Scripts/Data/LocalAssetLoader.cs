@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -5,16 +6,10 @@ public class LocalAssetLoader<T> : AssetLoader<T>
 {
     private AsyncOperationHandle<T> _handle;
 
-    public event System.Action<T> DataLoaded;
-
-    public void LoadAsset(string assetKey)
+    public async Task<T> LoadAsset(string assetKey)
     {
-        var operationHandle = Addressables.LoadAssetAsync<T>(assetKey);
-        operationHandle.Completed += handle =>
-        {
-            _handle = handle;
-            DataLoaded?.Invoke(_handle.Result);
-        };
+        _handle = Addressables.LoadAssetAsync<T>(assetKey);
+        return await _handle.Task;
     }
 
     public void UnloadAsset()
