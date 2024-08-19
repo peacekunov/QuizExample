@@ -31,6 +31,11 @@ public class LevelMap : MonoBehaviour
 
     private void Start()
     {
+        foreach (var tile in _tiles)
+        {
+            tile.Value.SetDefaultState();
+        }
+
         if (_playerState.HasLevelData)
         {
             LoadLevelData();
@@ -46,7 +51,6 @@ public class LevelMap : MonoBehaviour
         var steps = new List<LevelStepData>();
         foreach (var tile in _tiles)
         {
-            tile.Value.SetDefaultState();
             steps.Add(new LevelStepData { Id = tile.Key });
         }
 
