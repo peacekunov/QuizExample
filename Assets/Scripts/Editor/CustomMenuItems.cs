@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CustomMenuItems
 {
-    [MenuItem("App/Clear PlayerPrefs")]
+    [MenuItem("QUIZ/Clear PlayerPrefs")]
     static void ClearPlayerPrefs()
     {
         PlayerPrefs.DeleteAll();

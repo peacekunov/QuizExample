@@ -31,11 +31,6 @@ public class LevelMap : MonoBehaviour
 
     private void Start()
     {
-        foreach (var tile in _tiles)
-        {
-            tile.Value.SetDefaultState();
-        }
-
         if (_playerState.HasLevelData)
         {
             LoadLevelData();
