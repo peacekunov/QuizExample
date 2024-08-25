@@ -9,7 +9,7 @@ public class LevelMap : MonoBehaviour
 
     private void Awake()
     {
-        _playerState = FindAnyObjectByType<PlayerState>();
+        _playerState = GameObject.FindWithTag(Constants.PLAYER_STATE_TAG).GetComponent<PlayerState>();
 
         _tiles = new Dictionary<int, TilePresenter>();
         foreach (var tileGameObject in GameObject.FindGameObjectsWithTag(Constants.LEVEL_MAP_TILE_TAG))
@@ -46,7 +46,6 @@ public class LevelMap : MonoBehaviour
         var steps = new List<LevelStepData>();
         foreach (var tile in _tiles)
         {
-            tile.Value.SetDefaultState();
             steps.Add(new LevelStepData { Id = tile.Key });
         }
 
@@ -67,6 +66,9 @@ public class LevelMap : MonoBehaviour
 
     public void CompleteTile(int id)
     {
-        _tiles[id].Complete();
+        if (_tiles.ContainsKey(id))
+        {
+            _tiles[id].Complete();
+        }
     }
 }

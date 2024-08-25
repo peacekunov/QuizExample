@@ -9,6 +9,6 @@ public class QuestionCategoryStyleList : ScriptableObject
 
     public QuestionCategoryStyle GetStyle(QuestionCategory category)
     {
-        return _questionsStyles.Single(c => c.Category == category);
+        return _questionsStyles.SingleOrDefault(c => c.Category == category);
     }
 }

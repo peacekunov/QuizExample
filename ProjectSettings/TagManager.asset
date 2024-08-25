@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - LevelMapTile
+  - PlayerState
+  - Questions
+  - UiManager
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,9 @@ using Zenject;
 public class GameLoader : MonoBehaviour
 {
     [SerializeField]
+    private Questions _questions;
+
+    [SerializeField]
     private PlayerState _playerState;
 
     [SerializeField]

@@ -10,5 +10,11 @@ public class Constants
 
     public const string LEVEL_MAP_TILE_TAG = "LevelMapTile";
 
+    public const string PLAYER_STATE_TAG = "PlayerState";
+
+    public const string QUESTIONS_TAG = "Questions";
+
+    public const string UI_MANAGER = "UiManager";
+
     public const string PLAYER_DATA_STORAGE_KEY = "pdata";
 }

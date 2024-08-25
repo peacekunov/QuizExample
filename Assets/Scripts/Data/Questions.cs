@@ -3,14 +3,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using UnityEngine;
 
-public class Questions
+public class Questions : MonoBehaviour
 {
     private QuestionDto[] _questions;
-
-    public Questions()
-    {
-        Debug.Log("Questions constructor");
-    }
 
     public async Task LoadData()
     {

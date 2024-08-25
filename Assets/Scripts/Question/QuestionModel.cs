@@ -22,6 +22,7 @@ public class QuestionModel
         Debug.Log("QuestionModel Constructor");
         _questions = questions;
         _imageLoader = new LocalAssetLoader<Sprite>();
+        _questions = GameObject.FindWithTag(Constants.QUESTIONS_TAG).GetComponent<Questions>();
     }
 
     public async void LoadQuestion(int id)

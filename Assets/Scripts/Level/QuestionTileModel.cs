@@ -1,7 +1,10 @@
+using UnityEngine;
+
 public class QuestionTileModel : TileModel
 {
     public override void Launch()
     {
-        FindFirstObjectByType<UIManager>().ShowQuestionScreen(_id);
+        var uiManager = GameObject.FindWithTag(Constants.UI_MANAGER).GetComponent<UIManager>();
+        uiManager.ShowQuestionScreen(_id);
     }
 }

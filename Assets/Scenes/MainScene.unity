@@ -134,8 +134,8 @@ GameObject:
   - component: {fileID: 7442297}
   - component: {fileID: 7442296}
   m_Layer: 0
-  m_Name: SceneContext
-  m_TagString: Untagged
+  m_Name: Questions
+  m_TagString: Questions
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -422,6 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2855ef3bfee9491daf13e6f9c79dd7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _questions: {fileID: 336496330}
   _playerState: {fileID: 1216683482}
   _uiManager: {fileID: 2087878253}
 --- !u!4 &705051840
@@ -451,7 +452,7 @@ GameObject:
   - component: {fileID: 1216683482}
   m_Layer: 0
   m_Name: PlayerState
-  m_TagString: Untagged
+  m_TagString: PlayerState
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -563,7 +564,7 @@ GameObject:
   - component: {fileID: 2087878253}
   m_Layer: 0
   m_Name: UIManager
-  m_TagString: Untagged
+  m_TagString: UiManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
