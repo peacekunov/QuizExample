@@ -4,32 +4,22 @@ using Zenject;
 
 public class GameLoader : MonoBehaviour
 {
-    [SerializeField]
-    private Questions _questions;
-
-    [SerializeField]
     private PlayerState _playerState;
 
-    [SerializeField]
-    private UIManager _uiManager;
-
     private Questions _questions;
 
-    [Inject]
-    public void Constructor(Questions questions)
-    {
-        Debug.Log("GameLoader constructor");
-        _questions = questions;
-    }
+    private Level.Factory _levelFactory;
 
-    private void Awake()
+    [Inject]
+    public void Constructor(PlayerState playerState, Questions questions, Level.Factory levelFactory)
     {
-        Debug.Log("GameLoader Awake");
+        _playerState = playerState;
+        _questions = questions;
+        _levelFactory = levelFactory;
     }
 
     private void Start()
     {
-        Debug.Log("GameLoader Start");
         LoadGame();
     }
 
@@ -40,7 +30,7 @@ public class GameLoader : MonoBehaviour
 
         await Task.WhenAll(playerStateLoading, questionDataLoading);
 
-        _uiManager.ShowLevelScreen();
+        _levelFactory.Create();
 
         Destroy(gameObject);
     }

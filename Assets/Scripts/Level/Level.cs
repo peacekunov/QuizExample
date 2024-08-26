@@ -1,16 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class LevelMap : MonoBehaviour
+public class Level : MonoBehaviour
 {
     private PlayerState _playerState;
 
     private Dictionary<int, TilePresenter> _tiles;
 
+    [Inject]
+    private void Constructor(PlayerState playerState)
+    {
+        _playerState = playerState;
+    }
+
     private void Awake()
     {
-        _playerState = GameObject.FindWithTag(Constants.PLAYER_STATE_TAG).GetComponent<PlayerState>();
-
         _tiles = new Dictionary<int, TilePresenter>();
         foreach (var tileGameObject in GameObject.FindGameObjectsWithTag(Constants.LEVEL_MAP_TILE_TAG))
         {
@@ -71,4 +76,6 @@ public class LevelMap : MonoBehaviour
             _tiles[id].Complete();
         }
     }
+
+    public class Factory : PlaceholderFactory<Level> { }
 }

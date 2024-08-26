@@ -1,13 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class ScoreView : MonoBehaviour
 {
     [SerializeField]
+    private Text _scoreText;
+
     private PlayerState _playerState;
 
-    [SerializeField]
-    private Text _scoreText;
+    [Inject]
+    public void Constructor(PlayerState playerState)
+    {
+        _playerState = playerState;
+    }
 
     private void OnEnable()
     {

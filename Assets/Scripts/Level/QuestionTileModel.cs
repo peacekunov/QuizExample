@@ -1,10 +1,17 @@
-using UnityEngine;
+using Zenject;
 
 public class QuestionTileModel : TileModel
 {
+    private Question.Factory _questionFactory;
+
+    [Inject]
+    public void Constructor(Question.Factory questionFactory)
+    {
+        _questionFactory = questionFactory;
+    }
+
     public override void Launch()
     {
-        var uiManager = GameObject.FindWithTag(Constants.UI_MANAGER).GetComponent<UIManager>();
-        uiManager.ShowQuestionScreen(_id);
+        _questionFactory.Create(_id);
     }
 }

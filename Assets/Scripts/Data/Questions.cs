@@ -3,16 +3,22 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using UnityEngine;
 
-public class Questions : MonoBehaviour
+public class Questions
 {
+    private AssetLoader<TextAsset> _assetLoader;
+
     private QuestionDto[] _questions;
+
+    public Questions(AssetLoader<TextAsset> assetLoader)
+    {
+        _assetLoader = assetLoader;
+    }
 
     public async Task LoadData()
     {
-        var assetLoader = new LocalAssetLoader<TextAsset>();
-        var textAsset = await assetLoader.LoadAsset(Constants.QUESTION_DATA_ASSET_KEY);
+        var textAsset = await _assetLoader.LoadAsset(Constants.QUESTION_DATA_ASSET_KEY);
         _questions = JsonConvert.DeserializeObject<QuestionDto[]>(textAsset.text);
-        assetLoader.UnloadAsset();
+        _assetLoader.UnloadAsset(textAsset);
     }
 
     public QuestionDto GetById(int id)

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 public class QuestionPresenter : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class QuestionPresenter : MonoBehaviour
 
     private PlayerState _playerState;
 
-    private void Awake()
+    [Inject]
+    public void Constructor(QuestionModel model, PlayerState playerState)
     {
-        _playerState = GameObject.FindWithTag(Constants.PLAYER_STATE_TAG).GetComponent<PlayerState>();
-        _model = new QuestionModel();
+        _model = model;
+        _playerState = playerState;
     }
 
     private void OnEnable()

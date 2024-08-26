@@ -15,7 +15,6 @@ public class TileCategoryStyleHandler : MonoBehaviour
     [Inject]
     public void Constructor(Questions questions)
     {
-        Debug.Log("TileCategoryStyleHandler constructor");
         _questions = questions;
     }
 

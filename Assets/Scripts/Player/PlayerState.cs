@@ -1,8 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
-using UnityEngine;
 
-public class PlayerState : MonoBehaviour
+public class PlayerState
 {
     private PlayerData _playerData;
 
@@ -16,10 +15,10 @@ public class PlayerState : MonoBehaviour
 
     public event System.Action<int> StepCompleted;
 
-    private void Awake()
+    public PlayerState(PlayerData playerData, Storage<PlayerData> storage)
     {
-        _storage = new PlayerPrefsStorage<PlayerData>(Constants.PLAYER_DATA_STORAGE_KEY);
-        _playerData = new PlayerData();
+        _playerData = playerData;
+        _storage = storage;
     }
 
     public async Task LoadData()

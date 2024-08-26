@@ -1,15 +1,16 @@
 using UnityEngine;
-using Zenject;
 
 public class QuestionModel
 {
     private Questions _questions;
 
+    private AssetLoader<Sprite> _imageLoader;
+
     private QuestionDto _questionData;
 
-    private bool _isAnswered;
+    private Sprite _image;
 
-    private LocalAssetLoader<Sprite> _imageLoader;
+    private bool _isAnswered;
 
     public event System.Action<QuestionDto, Sprite> QuestionLoaded;
 
@@ -17,19 +18,17 @@ public class QuestionModel
 
     public int QuestionId => _questionData.id;
 
-    public QuestionModel(Questions questions)
+    public QuestionModel(Questions questions, AssetLoader<Sprite> imageLoader)
     {
-        Debug.Log("QuestionModel Constructor");
         _questions = questions;
-        _imageLoader = new LocalAssetLoader<Sprite>();
-        _questions = GameObject.FindWithTag(Constants.QUESTIONS_TAG).GetComponent<Questions>();
+        _imageLoader = imageLoader;
     }
 
     public async void LoadQuestion(int id)
     {
         _questionData = _questions.GetById(id);
-        var image = await _imageLoader.LoadAsset(Constants.QUESTION_IMAGES_ASSET_KEY + _questionData.id + ".jpg");
-        QuestionLoaded?.Invoke(_questionData, image);
+        _image = await _imageLoader.LoadAsset(Constants.QUESTION_IMAGES_ASSET_KEY + _questionData.id + ".jpg");
+        QuestionLoaded?.Invoke(_questionData, _image);
     }
 
     public void Answer(int answerIndex)
@@ -44,6 +43,6 @@ public class QuestionModel
 
     public void UnloadResources()
     {
-        _imageLoader.UnloadAsset();
+        _imageLoader.UnloadAsset(_image);
     }
 }
